@@ -1,2 +1,2 @@
 # TPO-Paradigma-Orientado-a-Objetos
-Repositorio para enviar el codigo de nuestro TPO
+Repositorio para trabajar el codigo e informe de nuestro TPO
