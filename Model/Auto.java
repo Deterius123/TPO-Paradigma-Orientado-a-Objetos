@@ -10,7 +10,7 @@ public abstract class Auto{
 
     private int precioLista;
 
-    public Auto(){
+    public Auto(int kilometraje, String marca, int modelo, int precioLista{
         this.kilometraje = kilometraje;
         this.marca = marca;
         this.modelo = modelo;
