@@ -10,14 +10,14 @@ public abstract class Auto{
 
     private int precioLista;
 
-    public Auto(int kilometraje, String marca, int modelo, int precioLista{
+    public Auto(int kilometraje, String marca, int modelo, int precioLista){
         this.kilometraje = kilometraje;
         this.marca = marca;
         this.modelo = modelo;
         this.precioLista = precioLista;
     }
 
-    public abstract void intentarComprar();
+    public abstract void intentarComprar(void Cliente);
 
     public boolean es0KM() {
         return false;

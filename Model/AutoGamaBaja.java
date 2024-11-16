@@ -1,17 +1,8 @@
-public class AutoGamaBaja {
+public class AutoGamaBaja extends Auto{
 
-    public AutoGamaBaja() {
+    public AutoGamaBaja(int kilometraje, String marca, int modelo, int precioLista) {
+        super(kilometraje, marca, modelo, precioLista);
     }
-
-    private int kilometraje;
-
-    private enum estadoDeCompra;
-
-    private int modelo;
-
-    private String marca;
-
-    private int precioBase;
 
     public void intentarComprar(void Cliente) {
         return null;
