@@ -1,10 +1,4 @@
-
-import java.util.*;
-
-public class Cliente {
-
-    public Cliente() {
-    }
+public class Cliente{
 
     private int presupuesto;
 
@@ -12,4 +6,9 @@ public class Cliente {
 
     private boolean Tarjeta;
 
+    public Cliente(){
+        this.presupuesto = presupuesto;
+        this.idCliente = idCliente;
+        this.Tarjeta = Tarjeta;
+    }
 }

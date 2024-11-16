@@ -1,9 +1,9 @@
 
 import java.util.*;
 
-public class Agencia {
+public class Agencia{
 
-    public Agencia() {
+    public Agencia(){
     }
 
     private list listaAutos;
