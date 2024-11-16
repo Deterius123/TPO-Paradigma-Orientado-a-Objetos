@@ -18,7 +18,7 @@ public class Agencia {
         return null;
     }
 
-    public list filtrarAutosPorMarca() {
+    public List<Auto> filtrarAutosPorMarca() {
         return null;
     }
 
