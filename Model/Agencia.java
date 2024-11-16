@@ -1,5 +1,5 @@
-
 import java.util.*;
+import Model.Auto;
 
 public class Agencia {
 
@@ -16,7 +16,7 @@ public class Agencia {
 
 
     //---------------------------------------------------------------------------------------------------------------------------------------
-    public Object sugerirAutoParaCliente() {
+    public List<Auto> sugerirAutoParaCliente() {
         return null;
     }
 
@@ -57,7 +57,7 @@ public class Agencia {
         return autosFiltrados; // Devuelve la lista combinada
     }
 //---------------------------------------------------------------------------------------------------------------------------------------
-    public list filtrarAutosPorModelo() {
+    public List<Auto> filtrarAutosPorModelo() {
         return null;
     }
 
