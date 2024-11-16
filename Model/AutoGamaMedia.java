@@ -8,8 +8,4 @@ public class AutoGamaMedia extends Auto{
         return null;
     }
 
-    public boolean es0KM() {
-        return false;
-    }
-
 }
