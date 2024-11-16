@@ -1,9 +1,11 @@
 
+import Model.Auto;
 import java.util.*;
 
-public class Agencia {
+public class Agencia extends Auto {
 
     public Agencia(){
+
     }
     //---------------------------------------------------------------------------------------------------------------------------------------
     private int precioLista;
