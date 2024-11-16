@@ -19,7 +19,7 @@ public class Auto Gama Media {
     public void intentarComprar(void Cliente) {
         return null;
     }
-
+//acnaivbnbniavniav
     public boolean es0KM() {
         return false;
     }
