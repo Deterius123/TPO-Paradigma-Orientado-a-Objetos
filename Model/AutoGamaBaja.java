@@ -1,6 +1,6 @@
-public class Auto_Gama_Baja {
+public class AutoGamaBaja {
 
-    public Auto_Gama_Baja() {
+    public AutoGamaBaja() {
     }
 
     private int kilometraje;
