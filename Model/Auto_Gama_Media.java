@@ -1,10 +1,6 @@
+public class Auto_Gama_Media {
 
-import java.util.*;
-
-
-public abstract class Auto {
-
-    public Auto() {
+    public Auto_Gama_Media() {
     }
 
     private int kilometraje;
@@ -15,9 +11,11 @@ public abstract class Auto {
 
     private String marca;
 
-    private int precioLista;
+    private int precioBase;
 
-    public abstract void intentarComprar();
+    public void intentarComprar(void Cliente) {
+        return null;
+    }
 
     public boolean es0KM() {
         return false;

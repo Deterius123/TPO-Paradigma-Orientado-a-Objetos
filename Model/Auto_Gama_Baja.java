@@ -1,9 +1,6 @@
+public class Auto_Gama_Baja {
 
-import java.util.*;
-
-public class Auto Gama Media {
-
-    public Auto Gama Media() {
+    public Auto_Gama_Baja() {
     }
 
     private int kilometraje;

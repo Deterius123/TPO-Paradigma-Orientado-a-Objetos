@@ -1,9 +1,6 @@
+public abstract class Auto{
 
-import java.util.*;
-
-public class Auto Gama Alta {
-
-    public Auto Gama Alta() {
+    public Auto() {
     }
 
     private int kilometraje;
@@ -14,11 +11,9 @@ public class Auto Gama Alta {
 
     private String marca;
 
-    private int precioBase;
+    private int precioLista;
 
-    public void intentarComprar(void Cliente) {
-        return null;
-    }
+    public abstract void intentarComprar();
 
     public boolean es0KM() {
         return false;
