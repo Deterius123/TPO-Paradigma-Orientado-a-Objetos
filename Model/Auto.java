@@ -20,7 +20,7 @@ public abstract class Auto{
     public abstract void intentarComprar(void Cliente);
 
     public boolean es0KM() {
-        return false;
+        return kilometraje < 100;
     }
 
     public int getKilometraje() {
