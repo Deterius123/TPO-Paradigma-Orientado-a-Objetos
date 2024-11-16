@@ -30,8 +30,8 @@ public class Agencia {
         List<Auto> autosMenores = new ArrayList<>();  // Lista para autos menores o iguales al precio
         List<Auto> autosMayores = new ArrayList<>();  // Lista para autos mayores pero dentro del 10%
 
-        double limite = precio * 1.10; // Calcula el límite superior (10% más del precio ingresado)
-
+        double limitePresupuesto = precio * 1.10; // Calcula el límite superior (10% más del precio ingresado)
+// .-HAY QUE CAMBIAR EL PRECIO PORQUE SERÁ INGRESADO POR UN INPUT DEL USUARIO-.
 //---------------------------------------------------------------------------------------------------------------------------------------
         for (Auto auto : listaAutos) { // Recorre todos los autos de la lista
             // Si el precio del auto es menor o igual al ingresado y aún hay espacio para menores
@@ -39,7 +39,7 @@ public class Agencia {
                 autosMenores.add(auto);
 
             // Si el precio del auto está entre el precio ingresado y el 10% adicional
-            } else if (autosMayores.size() < 2 && auto.getPrecioLista() > precio && auto.getPrecioLista() <= limite) {
+            } else if (autosMayores.size() < 2 && auto.getPrecioLista() > precio && auto.getPrecioLista() <= limitePresupuesto) {
                 autosMayores.add(auto);
             }
 
