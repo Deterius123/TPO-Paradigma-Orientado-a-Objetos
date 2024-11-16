@@ -12,17 +12,7 @@ public class Agencia {
 
     private List<Auto> listaAutos; // Lista donde estaran almacenados los autos ingresados
 
-    private List<Cliente> listaClientes; // NO SE USA POR AHORA
-
-
-    //---------------------------------------------------------------------------------------------------------------------------------------
-    public List<Auto> sugerirAutoParaCliente() {
-        return null;
-    }
-
-    public List<Auto> filtrarAutosPorMarca() {
-        return null;
-    }
+    private List<Cliente> listaClientes; // ---NO SE USA POR AHORA---
 
 //---------------------------------------------------------------------------------------------------------------------------------------
 // Este metodo va a filtrar los autos menores a cierto precio y mostrara los primeros 3 autos menores al precio y 2 mayores por un 10%
@@ -33,7 +23,7 @@ public class Agencia {
         List<Auto> autosMayores = new ArrayList<>();  // Lista para autos mayores pero dentro del 10%
 
         double limitePresupuesto = precio * 1.10; // Calcula el límite superior (10% más del precio ingresado)
-// .-HAY QUE CAMBIAR EL PRECIO PORQUE SERÁ INGRESADO POR UN INPUT DEL USUARIO-.
+//  .-HAY QUE CAMBIAR EL PRECIO PORQUE SERÁ INGRESADO POR UN INPUT DEL USUARIO-.
 //---------------------------------------------------------------------------------------------------------------------------------------
         for (Auto auto : listaAutos) { // Recorre todos los autos de la lista
             // Si el precio del auto es menor o igual al ingresado y aún hay espacio para menores
@@ -58,6 +48,16 @@ public class Agencia {
     }
 //---------------------------------------------------------------------------------------------------------------------------------------
     public List<Auto> filtrarAutosPorModelo() {
+        return null;
+    }
+
+//---------------------------------------------------------------------------------------------------------------------------------------
+    public List<Auto> sugerirAutoParaCliente() {
+        return null;
+    }
+
+//---------------------------------------------------------------------------------------------------------------------------------------
+    public List<Auto> filtrarAutosPorMarca() {
         return null;
     }
 
