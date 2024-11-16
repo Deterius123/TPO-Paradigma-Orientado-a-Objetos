@@ -3,10 +3,12 @@ import java.util.*;
 
 public class Agencia {
 
-    public Agencia(){
+    public Agencia(List<Auto> listaAutos, List<Cliente> listaClientes) {
+        this.listaAutos = listaAutos;
+        this.listaClientes = listaClientes;
     }
+
     //---------------------------------------------------------------------------------------------------------------------------------------
-    private int precioLista;
 
     private List<Auto> listaAutos; // Lista donde estaran almacenados los autos ingresados
 
