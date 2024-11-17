@@ -17,6 +17,21 @@ public class Agencia {
 //---------------------------------------------------------------------------------------------------------------------------------------
 // Este metodo va a filtrar los autos menores a cierto precio y mostrara los primeros 3 autos menores al precio y 2 mayores por un 10%
     public List<Auto> filtrarAutosMenoresDe(int precio) {
+        List<Auto> autosMenores = new ArrayList<>();  // Lista para autos menores o iguales al precio
+
+        double limitePresupuesto = precio * 1.10; // Calcula el límite superior (10% más del precio ingresado)
+//  .-HAY QUE CAMBIAR EL PRECIO PORQUE SERÁ INGRESADO POR UN INPUT DEL USUARIO-.
+//---------------------------------------------------------------------------------------------------------------------------------------
+        for (Auto auto : listaAutos) { // Recorre todos los autos de la lista
+            // Si el precio del auto es menor o igual al ingresado
+            if (auto.getPrecioLista() <= precio) {
+                autosMenores.add(auto);
+
+            }
+
+        }
+        return autosMenores;
+    }
 
 //---------------------------------------------------------------------------------------------------------------------------------------
     public List<Auto> filtrarAutosPorModelo() {
@@ -53,7 +68,7 @@ public class Agencia {
 
             return autosFiltrados; // Devuelve la lista combinada
         }
-    }
+
 
 //---------------------------------------------------------------------------------------------------------------------------------------
     public List<Auto> filtrarAutosPorMarca() {
