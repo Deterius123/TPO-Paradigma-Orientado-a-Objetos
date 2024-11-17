@@ -1,4 +1,4 @@
-public class AutoGamaMedia extends Model.Auto {
+public class AutoGamaMedia extends Auto {
 
     public AutoGamaMedia(int kilometraje, String marca, int modelo, int precioLista) {
         super(kilometraje, marca, modelo, precioLista);

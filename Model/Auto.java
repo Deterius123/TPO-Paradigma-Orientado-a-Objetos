@@ -1,13 +1,8 @@
-package Model;
 import java.util.*;
 
 public abstract class Auto{
 
     private List<Auto> listaAutos;
-
-    public Auto() {
-        this.listaAutos = new ArrayList<>();
-    }
 
     private int kilometraje;
 
