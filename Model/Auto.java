@@ -26,7 +26,7 @@ public abstract class Auto{
         this.precioLista = precioLista;
     }
 
-    public abstract void intentarComprar(void Cliente);
+    public abstract void intentarComprar(Cliente cliente);
 
     public boolean es0KM() {
         return kilometraje < 100;
