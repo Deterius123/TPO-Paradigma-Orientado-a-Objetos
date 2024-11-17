@@ -26,7 +26,6 @@ public class AutoGamaMedia extends Auto {
 
 
     public boolean es0KM() {
-        // Determina si el auto es 0 KM
         return this.getKilometraje() < 100;
     }
 }
