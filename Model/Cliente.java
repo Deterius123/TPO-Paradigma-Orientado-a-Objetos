@@ -6,7 +6,7 @@ public class Cliente{
 
     private boolean Tarjeta;
 
-    public Cliente(){
+    public Cliente(int presupuesto, int idCliente, boolean Tarjeta){
         this.presupuesto = presupuesto;
         this.idCliente = idCliente;
         this.Tarjeta = Tarjeta;
