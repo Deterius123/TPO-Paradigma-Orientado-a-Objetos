@@ -34,8 +34,15 @@ public class Agencia {
     }
 
 //---------------------------------------------------------------------------------------------------------------------------------------
-    public List<Auto> filtrarAutosPorModelo() {
-        return null;
+    public List<Auto> filtrarAutosPorModelo(int modelo) {
+        List<Auto> autosPorModelo = new ArrayList<>(); //Lista para autos del modelo que buscamos
+        //Si el auto es del modelo que buscamos se le agrega a la lista
+        for (Auto auto : listaAutos){
+            if (auto.getModelo() == (modelo)){
+                autosPorModelo.add(auto);
+            }
+        }
+        return autosPorModelo;
     }
 
 //---------------------------------------------------------------------------------------------------------------------------------------
@@ -71,8 +78,16 @@ public class Agencia {
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------
-    public List<Auto> filtrarAutosPorMarca() {
-        return null;
+    public List<Auto> filtrarAutosPorMarca(String marca) {
+        List<Auto> autosPorMarca = new ArrayList<>(); // Lista para autos que sean de la marca que buscamos
+        // Si la marca es igual a la buscada se la agrega a la lista
+        // toUpperCase() se asegura que la marca empiece en mayuscula
+        for (Auto auto : listaAutos){
+            if (auto.getMarca().equals(marca.toUpperCase())){
+                autosPorMarca.add(auto);
+            }
+        }
+        return autosPorMarca; //Devuelve la lista
     }
 
 }
