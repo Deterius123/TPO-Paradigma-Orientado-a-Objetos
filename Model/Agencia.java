@@ -1,4 +1,5 @@
 import java.util.*;
+import Model.Auto;
 
 public class Agencia {
 
@@ -7,9 +8,6 @@ public class Agencia {
         this.listaClientes = listaClientes;
     }
 
-    private void agregarAuto(Auto auto){
-        listaAutos.add(auto);
-    }
     //---------------------------------------------------------------------------------------------------------------------------------------
 
     private List<Auto> listaAutos; // Lista donde estaran almacenados los autos ingresados
