@@ -7,34 +7,34 @@ public class Agencia {
             this.listaClientes = listaClientes;
         }
 
-        //---------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------
 
         private List<Auto> listaAutos; // Lista donde estaran almacenados los autos ingresados
 
-        private List<Cliente> listaClientes; // ---NO SE USA POR AHORA---
-
-        //---------------------------------------------------------------------------------------------------------------------------------------
-    // Este metodo va a filtrar los autos menores a cierto precio
+        private List<Cliente> listaClientes; // ---NO SE USA POR AHORA--- Si bien está declarada no es utilizada en el programa.
+//---------------------------------------------------------------------------------------------------------------------------------------
+        // Este metodo va a filtrar los autos menores a cierto precio
         public List<Auto> filtrarAutosMenoresDe(int precio) {
             List<Auto> autosMenores = new ArrayList<>();  // Lista para autos menores o iguales al precio
 
             double limitePresupuesto = precio * 1.10; // Calcula el límite superior (10% más del precio ingresado)
-    //---------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------
             for (Auto auto : listaAutos) { // Recorre todos los autos de la lista
                 // Si el precio del auto es menor o igual al ingresado
                 if (auto.getPrecioLista() <= precio) {
                     autosMenores.add(auto);
                 }
             }
-                if (autosMenores.isEmpty()){
+                if (autosMenores.isEmpty()){    // Verifica si la lista de autos menores a cierto precio está vacia, si lo está muestra mensaje en pantalla.
                     System.out.println("No se encontraron autos menores a ese precio");
                     return null;
-                }else{
+                }else{ // Si no está vacia devuelve lo que tenga en el momento.
                     return autosMenores;
                 }
         }
 
-        //---------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------
+        // Metodo para filtrar autos por modelo.
         public List<Auto> filtrarAutosPorModelo(int modelo) {
             List<Auto> autosPorModelo = new ArrayList<>(); //Lista para autos del modelo que buscamos
             //Si el auto es del modelo que buscamos se le agrega a la lista
@@ -43,20 +43,20 @@ public class Agencia {
                     autosPorModelo.add(auto);
                 }
             }
-                if (autosPorModelo.isEmpty()){
+                if (autosPorModelo.isEmpty()){  // Se verifica si la lista de autos por modelo está vacia devuelve un mensaje por pantalla.
                     System.out.println("No se encontraron autos de ese modelo");
                     return null;
-                }else{
+                }else{  // Si no está vacia, devuelve lo que tiene en el momento.
                     return autosPorModelo;
                 }
         }
-
+        // Simplemente agrega un auto ingresado a la listaAutos.
         public void agregarAuto(Auto auto) {
             listaAutos.add(auto);
         }
 
-        //---------------------------------------------------------------------------------------------------------------------------------------
-    // Metodo para sugerir los 3 autos con menor diferencia respecto al presupuesto
+//---------------------------------------------------------------------------------------------------------------------------------------
+        // Metodo para sugerir los 3 autos con menor diferencia respecto al presupuesto
         public List<Auto> sugerirAutoParaCliente(Cliente cliente) {
 
             int presupuesto = cliente.getPresupuesto();
@@ -74,7 +74,7 @@ public class Agencia {
                 if (precioAuto >= rangoInferior && precioAuto <= rangoSuperior) {
                     autosEnRango.add(auto);
                 }
-            }
+            }// Se verifica si la lista de autos dentro del rango de precio está vacia devuelve un mensaje por pantalla.
             if (autosEnRango.isEmpty()) {
                 System.out.println("No existen autos para sugerir a este cliente");
                 return null;
@@ -90,18 +90,26 @@ public class Agencia {
 
                 // Intentar obtener los primeros 3 autos o menos si no hay suficientes autos
                 try {
+
                     // Si la lista tiene más de 3 autos, se seleccionan los primeros 3
-                    return autosEnRango.subList(0, 3);
+
+                    return autosEnRango.subList(0, 3); // Lo que hace el subList es extrar una parte de una lista creando una "sublista" ya existente.
+                    // Los parametros subList(Parametro de inicio, parametro de fin) tienen esa logica, funcionan con el indice de una lista y se
+                    // les aclara desde donde comienzan y hasta que elemento llegan.
+
                 } catch (IndexOutOfBoundsException e) {
-                    // Si hay menos de 3 autos, devolver la lista completa
+                    // Si hay menos de 3 autos, devolver la lista como está.
                     return autosEnRango;
                 }
             }
         }
 
-    //---------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------
+            // Metodo para filtrar autos por marca.
             public List<Auto> filtrarAutosPorMarca (String marca){
+
                 List<Auto> autosPorMarca = new ArrayList<>(); // Lista para autos que sean de la marca que buscamos
+
                 // Si la marca es igual a la buscada se la agrega a la lista
                 // toUpperCase() se asegura que la marca empiece en mayuscula
                 for (Auto auto : listaAutos) {
@@ -109,10 +117,10 @@ public class Agencia {
                         autosPorMarca.add(auto);
                     }
                 }
-                    if (autosPorMarca.isEmpty()){
+                    if (autosPorMarca.isEmpty()){   // Se verifica si la lista de autos por marca está vacia devuelve un mensaje por pantalla.
                         System.out.println("No se encontro ningun auto con esa marca");
                         return null;
-                    }else {
+                    }else { // Si no está vacia, devuelve lo que tiene en el momento.
                         return autosPorMarca; //Devuelve la lista
                     }
                 }
