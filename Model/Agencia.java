@@ -61,6 +61,7 @@ public class Agencia {
 
             int precioAuto = auto.getPrecioLista(); // Esto es un getter a la lista de precios.
 
+            // Esto verifica cada elemento que está en la listaAutos y verifica 2 menores y 1 mayor.
             if (precioAuto >= rangoInferior && precioAuto <= rangoSuperior) {
                 autosEnRango.add(auto);
             }
@@ -68,6 +69,7 @@ public class Agencia {
 
         // Ordenar los autos por la diferencia entre su precio y el presupuesto
         autosEnRango.sort((auto1, auto2) -> {
+            // La flecha "->" es una expresion lambda que especifica que los parametros ingresados (auto1, auto2) van a hacer el codigo que le sigue.
             int diferencia1 = Math.abs(auto1.getPrecioLista() - presupuesto);
             int diferencia2 = Math.abs(auto2.getPrecioLista() - presupuesto);
 
@@ -79,7 +81,7 @@ public class Agencia {
             // Si la lista tiene más de 3 autos, se seleccionan los primeros 3
             return autosEnRango.subList(0, 3);
         } catch (IndexOutOfBoundsException e) {
-            // Si hay menos de 3 autos, devolver la lista completa (sin subList)
+            // Si hay menos de 3 autos, devolver la lista completa
             return autosEnRango;
     }
 
@@ -96,5 +98,4 @@ public class Agencia {
         }
         return autosPorMarca; //Devuelve la lista
     }
-
 }
