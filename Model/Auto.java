@@ -3,12 +3,6 @@ import java.util.*;
 
 public abstract class Auto{
 
-    private List<Auto> listaAutos;
-
-    public Auto() {
-        this.listaAutos = new ArrayList<>();
-    }
-
     private int kilometraje;
 
     private EstadosDelAuto estadoDeCompra;
@@ -24,6 +18,7 @@ public abstract class Auto{
         this.marca = marca;
         this.modelo = modelo;
         this.precioLista = precioLista;
+        this.estadoDeCompra = EstadosDelAuto.A_LA_VENTA;
     }
 
     public abstract void intentarComprar(Cliente cliente);

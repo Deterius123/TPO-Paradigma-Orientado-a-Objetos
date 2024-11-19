@@ -4,7 +4,6 @@ public class AutoGamaAlta extends Auto {
         super(kilometraje, marca, modelo, precioLista);
     }
 
-
     public void intentarComprar(Cliente cliente) {
         double precioFinal = this.getPrecioLista() * 1.20;
 
@@ -22,10 +21,5 @@ public class AutoGamaAlta extends Auto {
         else {
             System.out.println("El cliente no tiene suficiente presupuesto para este auto de gama alta.");
         }
-    }
-
-
-    public boolean es0KM() {
-        return this.getKilometraje() < 100;
     }
 }

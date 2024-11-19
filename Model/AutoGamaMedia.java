@@ -18,15 +18,10 @@ public class AutoGamaMedia extends Auto {
             System.out.println("El cliente puede comprar el auto en efectivo. Precio: " + this.getPrecioLista());
             this.setEstadoDeCompra(EstadosDelAuto.VENDIDO); // Cambia el estado a vendido
         }
-
+        // Si el cliente no tiene suficiente presupuesto para comprar el auto
         else {
             System.out.println("El cliente no tiene suficiente presupuesto para este auto.");
         }
-    }
-
-
-    public boolean es0KM() {
-        return this.getKilometraje() < 100;
     }
 }
 
