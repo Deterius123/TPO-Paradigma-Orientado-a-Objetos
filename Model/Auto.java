@@ -1,11 +1,8 @@
-
-import java.util.*;
-
-public abstract class Auto{
+public abstract class Auto implements Valuable{
 
     private int kilometraje;
 
-    private EstadosDelAuto estadoDeCompra;
+    private EstadosDelVehiculo estadoDeCompra;
 
     private int modelo;
 
@@ -18,7 +15,7 @@ public abstract class Auto{
         this.marca = marca;
         this.modelo = modelo;
         this.precioLista = precioLista;
-        this.estadoDeCompra = EstadosDelAuto.A_LA_VENTA;
+        this.estadoDeCompra = EstadosDelVehiculo.A_LA_VENTA;
     }
 
     public abstract void intentarComprar(Cliente cliente);
@@ -59,11 +56,14 @@ public abstract class Auto{
         this.precioLista = precioLista;
     }
 
-    public EstadosDelAuto getEstadoDeCompra() {
+    public EstadosDelVehiculo getEstadoDeCompra() {
         return estadoDeCompra;
     }
 
-    public void setEstadoDeCompra(EstadosDelAuto estadoDeCompra) {
+    public void setEstadoDeCompra(EstadosDelVehiculo estadoDeCompra) {
         this.estadoDeCompra = estadoDeCompra;
     }
+
+    @Override
+    public abstract double calcularPrecio();
 }

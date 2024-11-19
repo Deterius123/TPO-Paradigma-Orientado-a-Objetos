@@ -2,16 +2,19 @@ import java.util.*;
 
 public class Agencia {
 
-        public Agencia(List<Auto> listaAutos, List<Cliente> listaClientes) {
+        public Agencia(List<Auto> listaAutos, List<Cliente> listaClientes, List<Moto> listaMotos) {
             this.listaAutos = listaAutos;
             this.listaClientes = listaClientes;
+            this.listaMotos = listaMotos;
         }
 
 //---------------------------------------------------------------------------------------------------------------------------------------
 
         private List<Auto> listaAutos; // Lista donde estaran almacenados los autos ingresados
 
-        private List<Cliente> listaClientes; // ---NO SE USA POR AHORA--- Si bien está declarada no es utilizada en el programa.
+        private List<Cliente> listaClientes; //Lista donde estaran ingreasdos los clientes
+
+        private List<Moto> listaMotos; //Lista donde estaran almacenados las motos ingresadas
 //---------------------------------------------------------------------------------------------------------------------------------------
         // Este metodo va a filtrar los autos menores a cierto precio
         public List<Auto> filtrarAutosMenoresDe(int precio) {
