@@ -4,9 +4,9 @@ public class AutoGamaBaja extends Auto {
         super(kilometraje, marca, modelo, precioLista);
     }
 
-
     public void intentarComprar(Cliente cliente) {
-        double precioFinal = this.getPrecioLista() * 1.05;
+        double precioFinal = this.getPrecioLista() * 1.05; // Se aplica un 5% extra al precio de lista
+
         // Si el cliente tiene tarjeta y su presupuesto cubre el precio final
         if (cliente.isTarjeta() && cliente.getPresupuesto() >= precioFinal) {
             System.out.println("El cliente puede comprar el auto de gama baja usando tarjeta. Precio final: " + precioFinal);

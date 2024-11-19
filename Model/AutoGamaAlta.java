@@ -5,18 +5,14 @@ public class AutoGamaAlta extends Auto {
     }
 
     public void intentarComprar(Cliente cliente) {
-        double precioFinal = this.getPrecioLista() * 1.20;
+        double precioFinal = this.getPrecioLista() * 1.20; // Se aplica un 20% extra al precio de lista
 
         // Si el cliente tiene tarjeta y su presupuesto cubre el precio final
         if (cliente.isTarjeta() && cliente.getPresupuesto() >= precioFinal) {
             System.out.println("El cliente puede comprar el auto de gama alta usando tarjeta. Precio final: " + precioFinal);
             this.setEstadoDeCompra(EstadosDelAuto.VENDIDO); // Cambia el estado a vendido
         }
-        // Si el cliente no tiene tarjeta pero tiene el presupuesto suficiente para pagar en efectivo
-        else if (!cliente.isTarjeta() && cliente.getPresupuesto() >= this.getPrecioLista()) {
-            System.out.println("El cliente puede comprar el auto de gama alta en efectivo. Precio: " + this.getPrecioLista());
-            this.setEstadoDeCompra(EstadosDelAuto.VENDIDO); // Cambia el estado a vendido
-        }
+        // el cliente no puede comprar autos de alta gama con efectivo
         // Si el cliente no tiene suficiente presupuesto para comprar el auto
         else {
             System.out.println("El cliente no tiene suficiente presupuesto para este auto de gama alta.");
