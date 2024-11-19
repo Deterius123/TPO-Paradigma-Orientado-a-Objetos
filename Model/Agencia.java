@@ -44,37 +44,44 @@ public class Agencia {
         }
         return autosPorModelo;
     }
-
+    public void agregarAuto(Auto auto) {
+        listaAutos.add(auto);
+    }
 //---------------------------------------------------------------------------------------------------------------------------------------
-    public List<Auto> sugerirAutoParaCliente() {
-            List<Auto> autosFiltrados = new ArrayList<>(); // Lista principal para devolver los resultados
-            List<Auto> autosMenores = new ArrayList<>();  // Lista para autos menores o iguales al precio
-            List<Auto> autosMayores = new ArrayList<>();  // Lista para autos mayores pero dentro del 10%
+// Metodo para sugerir los 3 autos con menor diferencia respecto al presupuesto
+    public List<Auto> sugerirAutoParaCliente(int presupuesto) {
 
-            double limitePresupuesto = precio * 1.10; // Calcula el límite superior (10% más del precio ingresado)
-//  .-HAY QUE CAMBIAR EL PRECIO PORQUE SERÁ INGRESADO POR UN INPUT DEL USUARIO-.
-//---------------------------------------------------------------------------------------------------------------------------------------
-            for (Auto auto : listaAutos) { // Recorre todos los autos de la lista
-                // Si el precio del auto es menor o igual al ingresado y aún hay espacio para menores
-                if (autosMenores.size() < 3 && auto.getPrecioLista() <= precio) {
-                    autosMenores.add(auto);
+        List<Auto> autosEnRango = new ArrayList<>(); // Esto va a ser una lista donde van a estar los autos que esten un 10% mayor y menor al presupuesto.
 
-                    // Si el precio del auto está entre el precio ingresado y el 10% adicional
-                } else if (autosMayores.size() < 2 && auto.getPrecioLista() > precio && auto.getPrecioLista() <= limitePresupuesto) {
-                    autosMayores.add(auto);
-                }
+        int rangoInferior = (int) (presupuesto * 0.90); // 10% debajo del presupuesto
+        int rangoSuperior = (int) (presupuesto * 1.10); // 10% encima del presupuesto
 
-                // Rompe el bucle si ya se tienen los autos necesarios
-                if (autosMenores.size() == 3 && autosMayores.size() == 2) {
-                    break;
-                }
+        // Filtrar los autos dentro del rango de precio
+        for (Auto auto : listaAutos) {
+
+            int precioAuto = auto.getPrecioLista(); // Esto es un getter a la lista de precios.
+
+            if (precioAuto >= rangoInferior && precioAuto <= rangoSuperior) {
+                autosEnRango.add(auto);
             }
-            // Combina los resultados de ambas listas en la lista principal
-            autosFiltrados.addAll(autosMenores);
-            autosFiltrados.addAll(autosMayores);
-
-            return autosFiltrados; // Devuelve la lista combinada
         }
+
+        // Ordenar los autos por la diferencia entre su precio y el presupuesto
+        autosEnRango.sort((auto1, auto2) -> {
+            int diferencia1 = Math.abs(auto1.getPrecioLista() - presupuesto);
+            int diferencia2 = Math.abs(auto2.getPrecioLista() - presupuesto);
+
+            return Integer.compare(diferencia1, diferencia2);
+        });
+
+        // Intentar obtener los primeros 3 autos o menos si no hay suficientes autos
+        try {
+            // Si la lista tiene más de 3 autos, se seleccionan los primeros 3
+            return autosEnRango.subList(0, 3);
+        } catch (IndexOutOfBoundsException e) {
+            // Si hay menos de 3 autos, devolver la lista completa (sin subList)
+            return autosEnRango;
+    }
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------
