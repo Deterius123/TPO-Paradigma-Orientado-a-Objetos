@@ -36,7 +36,6 @@ public class Main {
         Auto auto13 = new AutoGamaAlta(250, "Lamborghini", 2020, 300000, agenciaPrueba);
         Auto auto14 = new AutoGamaAlta(100, "Rolls-Royce", 2018, 400000, agenciaPrueba);
         Auto auto15 = new AutoGamaAlta(345, "Porsche", 2019, 150000, agenciaPrueba);
-
         // Moto
         Moto moto1 = new Moto(2020, "Yamaha", 100000, TiposDeMoto.DEPORTIVA, agenciaPrueba);
         Moto moto2 = new Moto(2021, "Honda", 120000, TiposDeMoto.SCOOTER, agenciaPrueba);
@@ -51,8 +50,9 @@ public class Main {
 
 
         // Creamos un cliente y un presupuesto y lo añadimos a la agencia.
-        Cliente cliente1 = new Cliente(100000, 123, true);
-
+        Cliente cliente1 = new Cliente(45000, 123, true);
+        System.out.println("Intentar Comprar");
+        auto15.intentarComprar(cliente1);
         // Mostramos la lista de autos y motos disponibles.
         //agenciaPrueba.mostrarAutos();
 
@@ -98,10 +98,10 @@ public class Main {
 
                     if (tipoSeleccionado == 1) {
                         // Selección de auto
-                        seleccionarAuto(listaAutos, presupuesto);
+                        seleccionarAuto(listaAutos, cliente1);
                     } else if (tipoSeleccionado == 2) {
                         // Selección de moto
-                        seleccionarMoto(listaMotos, presupuesto);
+                        seleccionarMoto(listaMotos, cliente1);
                     } else {
                         System.out.println("Opción inválida.");
                     }
@@ -193,7 +193,7 @@ public class Main {
     }
 
     // Metodo para seleccionar un auto y verificar la compra
-    private static void seleccionarAuto(List<Auto> listaAutos, int presupuesto) {
+    private static void seleccionarAuto(List<Auto> listaAutos, Cliente cliente) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Selecciona un auto para comprar (ingresa el número): ");
         for (int i = 0; i < listaAutos.size(); i++) {
@@ -203,14 +203,14 @@ public class Main {
         int seleccion = scanner.nextInt();
         if (seleccion > 0 && seleccion <= listaAutos.size()) {
             Auto auto = listaAutos.get(seleccion - 1);
-            verificarCompra(auto, presupuesto);
+            auto.intentarComprar(cliente);
         } else {
             System.out.println("Selección inválida.");
         }
     }
 
     // Metodo para seleccionar una moto y verificar la compra
-    private static void seleccionarMoto(List<Moto> listaMotos, int presupuesto) {
+    private static void seleccionarMoto(List<Moto> listaMotos, Cliente cliente) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Selecciona una moto para comprar (ingresa el número): ");
         for (int i = 0; i < listaMotos.size(); i++) {
@@ -220,26 +220,11 @@ public class Main {
         int seleccion = scanner.nextInt();
         if (seleccion > 0 && seleccion <= listaMotos.size()) {
             Moto moto = listaMotos.get(seleccion - 1);
-            verificarCompra(moto, presupuesto);
+            moto.intentarComprar(cliente);
         } else {
             System.out.println("Selección inválida.");
         }
     }
-
-    // Metodo para verificar si un cliente puede comprar el auto o moto
-    private static void verificarCompra(Auto auto, int presupuesto) {
-        // Verificar si el precio está dentro del presupuesto o hasta un 10% más
-        int rangoSuperior = (int) (presupuesto * 1.10);
-
-        if (presupuesto >= auto.getPrecioLista()) {
-            System.out.println("¡Puedes comprar este auto!");
-        } else if (auto.getPrecioLista() <= rangoSuperior) {
-            System.out.println("Este auto está un 10% por encima de tu presupuesto, pero aún puedes comprarlo.");
-        } else {
-            System.out.println("Lo siento, no tienes suficiente presupuesto para este auto.");
-        }
-    }
-
 
     private static void verificarCompra(Moto moto, int presupuesto) {
         // Verificar si el precio está dentro del presupuesto o hasta un 10% más

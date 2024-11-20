@@ -15,7 +15,7 @@ public class AutoGamaBaja extends Auto {
             decidirComprar();
         }
         // Si el cliente no tiene tarjeta pero tiene el presupuesto suficiente para pagar en efectivo
-        else if (!cliente.isTarjeta() && cliente.getPresupuesto() >= this.getPrecioLista()) {
+        else if (cliente.getPresupuesto() >= this.getPrecioLista()) {
             System.out.println("El cliente puede comprar el auto de gama baja en efectivo. Precio: " + this.getPrecioLista());
             decidirComprar();
         }

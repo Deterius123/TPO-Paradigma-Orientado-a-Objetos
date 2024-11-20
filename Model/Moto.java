@@ -15,6 +15,7 @@ public class Moto implements Valuable{
     private TiposDeMoto tipo;
 
     private Agencia agencia;
+
     public Moto(int modelo, String marca, int precioLista, TiposDeMoto tipo, Agencia agencia) {
         this.estadoDeCompra = EstadosDelVehiculo.A_LA_VENTA;
         this.modelo = modelo;
