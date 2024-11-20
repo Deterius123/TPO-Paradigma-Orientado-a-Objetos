@@ -1,4 +1,4 @@
-import Model;
+package Model;
 
 public class AutoGamaAlta extends Auto {
 
