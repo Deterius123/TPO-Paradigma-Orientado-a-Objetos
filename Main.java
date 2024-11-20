@@ -17,6 +17,7 @@ public class Main {
         Agencia agenciaPrueba = new Agencia(listaAutos, listaClientes, listaMotos);
 
         // Creamos algunos autos y los agregamos a agencia.
+
         // Gama baja
         Auto auto1 = new AutoGamaBaja(0, "Ford", 2020, 50000, agenciaPrueba);
         Auto auto2 = new AutoGamaBaja(100, "Chevrolet", 2018, 45000, agenciaPrueba);
@@ -69,69 +70,43 @@ public class Main {
         boolean salir = false;
         while (!salir) {
             System.out.println("\nOpciones:");
-            System.out.println("1. Mostrar autos de gama baja");
-            System.out.println("2. Mostrar autos de gama media");
-            System.out.println("3. Mostrar autos de gama alta");
-            System.out.println("4. Seleccionar un auto para verificar compra");
-            System.out.println("5. Salir");
+            System.out.println("1. Ver lista de autos");
+            System.out.println("2. Ver lista de motos");
+            System.out.println("3. Seleccionar y verificar compra de auto o moto");
+            System.out.println("4. Salir");
             System.out.print("Elige una opción: ");
             int opcion = scanner.nextInt();
             scanner.nextLine(); // Consumir el salto de línea
 
             switch (opcion) {
                 case 1:
-                    mostrarAutos(autosGamaBaja, "Baja");
+                    // Mostrar autos por diferentes filtros
+                    mostrarAutosPorFiltros(listaAutos, presupuesto);
                     break;
 
                 case 2:
-                    mostrarAutos(autosGamaMedia, "Media");
+                    // Mostrar motos por diferentes filtros
+                    mostrarMotosPorFiltros(listaMotos, presupuesto);
                     break;
 
                 case 3:
-                    mostrarAutos(autosGamaAlta, "Alta");
+                    // Seleccionar y verificar compra
+                    System.out.println("Selecciona '1' para auto o '2' para moto: ");
+                    int tipoSeleccionado = scanner.nextInt();
+                    scanner.nextLine(); // Consumir el salto de línea
+
+                    if (tipoSeleccionado == 1) {
+                        // Selección de auto
+                        seleccionarAuto(listaAutos, presupuesto);
+                    } else if (tipoSeleccionado == 2) {
+                        // Selección de moto
+                        seleccionarMoto(listaMotos, presupuesto);
+                    } else {
+                        System.out.println("Opción inválida.");
+                    }
                     break;
 
                 case 4:
-                    // Selección de auto para verificar compra
-                    System.out.println("Selecciona un auto ingresando su número (1 para baja, 2 para media, 3 para alta): ");
-                    int gamaSeleccionada = scanner.nextInt();
-                    scanner.nextLine(); // Consumir el salto de línea
-
-                    List<Auto> listaSeleccionada = null;
-                    switch (gamaSeleccionada) {
-                        case 1 -> listaSeleccionada = autosGamaBaja;
-                        case 2 -> listaSeleccionada = autosGamaMedia;
-                        case 3 -> listaSeleccionada = autosGamaAlta;
-                        default -> {
-                            System.out.println("Opción inválida.");
-                            continue;
-                        }
-                    }
-
-                    if (listaSeleccionada == null || listaSeleccionada.isEmpty()) {
-                        System.out.println("No hay autos disponibles en esta gama.");
-                        continue;
-                    }
-
-                    System.out.println("Autos disponibles:");
-                    for (int i = 0; i < listaSeleccionada.size(); i++) {
-                        System.out.println((i + 1) + ". " + listaSeleccionada.get(i));
-                    }
-
-                    System.out.print("Elige el auto ingresando su número: ");
-                    int autoSeleccionado = scanner.nextInt();
-                    scanner.nextLine(); // Consumir el salto de línea
-
-                    if (autoSeleccionado < 1 || autoSeleccionado > listaSeleccionada.size()) {
-                        System.out.println("Opción inválida.");
-                        continue;
-                    }
-
-                    Auto auto = listaSeleccionada.get(autoSeleccionado - 1);
-                    verificarCompra(auto, presupuesto);
-                    break;
-
-                case 5:
                     salir = true;
                     break;
 
@@ -143,5 +118,180 @@ public class Main {
         scanner.close();
         System.out.println("¡Gracias por visitar la agencia!");
     }
-}
 
+    // Metodo para mostrar autos según los filtros seleccionados
+    private static void mostrarAutosPorFiltros(List<Auto> autos, int presupuesto) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nFiltros disponibles para autos:");
+        System.out.println("1. Ver por marca");
+        System.out.println("2. Ver por modelo");
+        System.out.println("3. Ver por precio menor a");
+        System.out.print("Elige un filtro: ");
+        int filtro = scanner.nextInt();
+        scanner.nextLine(); // Consumir el salto de línea
+
+        switch (filtro) {
+            case 1:
+                System.out.print("Ingresa la marca: ");
+                String marca = scanner.nextLine();
+                autos.stream()
+                        .filter(auto -> auto.getMarca().equalsIgnoreCase(marca))
+                        .forEach(auto -> mostrarAuto(auto, presupuesto));
+                break;
+
+            /*case 2:
+                System.out.print("Ingresa el modelo: ");
+                String modelo = scanner.nextLine();
+                autos.stream()
+                        .filter(auto -> auto.getModelo().equalsIgnoreCase(modelo))
+                        .forEach(auto -> mostrarAuto(auto, presupuesto));
+                break;*/
+
+            case 3:
+                System.out.print("Ingresa el precio máximo: ");
+                int precioMaximo = scanner.nextInt();
+                scanner.nextLine(); // Consumir el salto de línea
+                autos.stream()
+                        .filter(auto -> auto.getPrecioLista() <= precioMaximo)
+                        .forEach(auto -> mostrarAuto(auto, presupuesto));
+                break;
+
+            default:
+                System.out.println("Filtro inválido.");
+        }
+    }
+
+    // Metodo para mostrar motos según los filtros seleccionados
+    private static void mostrarMotosPorFiltros(List<Moto> motos, int presupuesto) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nFiltros disponibles para motos:");
+        System.out.println("1. Ver por marca");
+        System.out.println("2. Ver por modelo");
+        System.out.println("3. Ver por tipo de moto");
+        System.out.println("4. Ver por precio menor a");
+        System.out.print("Elige un filtro: ");
+        int filtro = scanner.nextInt();
+        scanner.nextLine(); // Consumir el salto de línea
+
+        switch (filtro) {
+            case 1:
+                System.out.print("Ingresa la marca: ");
+                String marca = scanner.nextLine();
+                motos.stream()
+                        .filter(moto -> moto.getMarca().equalsIgnoreCase(marca))
+                        .forEach(moto -> mostrarMoto(moto, presupuesto));
+                break;
+
+            /*case 2:
+                System.out.print("Ingresa el modelo: ");
+                String modelo = scanner.nextLine();
+                motos.stream()
+                        .filter(moto -> moto.getModelo())
+                        .forEach(moto -> mostrarMoto(moto, presupuesto));
+                break;*/
+
+            case 3:
+                System.out.print("Ingresa el tipo de moto (Deportiva, Scooter, Doble-Proposito): ");
+                String tipo = scanner.nextLine().toUpperCase();
+                TiposDeMoto tipoMoto = TiposDeMoto.valueOf(tipo);
+                motos.stream()
+                        .filter(moto -> moto.getTipo() == tipoMoto)
+                        .forEach(moto -> mostrarMoto(moto, presupuesto));
+                break;
+
+            case 4:
+                System.out.print("Ingresa el precio máximo: ");
+                int precioMaximo = scanner.nextInt();
+                scanner.nextLine(); // Consumir el salto de línea
+                motos.stream()
+                        .filter(moto -> moto.getPrecioLista() <= precioMaximo)
+                        .forEach(moto -> mostrarMoto(moto, presupuesto));
+                break;
+
+            default:
+                System.out.println("Filtro inválido.");
+        }
+    }
+
+    // Metodo para mostrar un auto con su precio y verificar si está dentro del presupuesto
+    private static void mostrarAuto(Auto auto, int presupuesto) {
+        System.out.println(auto);
+        if (presupuesto >= auto.getPrecioLista()) {
+            System.out.println("Este auto está dentro de tu presupuesto.");
+        } else {
+            System.out.println("Este auto está fuera de tu presupuesto.");
+        }
+    }
+
+    // Metodo para mostrar una moto con su precio y verificar si está dentro del presupuesto
+    private static void mostrarMoto(Moto moto, int presupuesto) {
+        System.out.println(moto);
+        if (presupuesto >= moto.getPrecioLista()) {
+            System.out.println("Esta moto está dentro de tu presupuesto.");
+        } else {
+            System.out.println("Esta moto está fuera de tu presupuesto.");
+        }
+    }
+
+    // Metodo para seleccionar un auto y verificar la compra
+    private static void seleccionarAuto(List<Auto> autos, int presupuesto) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Selecciona un auto para comprar (ingresa el número): ");
+        for (int i = 0; i < autos.size(); i++) {
+            System.out.println((i + 1) + ". " + autos.get(i));
+        }
+
+        int seleccion = scanner.nextInt();
+        if (seleccion > 0 && seleccion <= autos.size()) {
+            Auto auto = autos.get(seleccion - 1);
+            verificarCompra(auto, presupuesto);
+        } else {
+            System.out.println("Selección inválida.");
+        }
+    }
+
+    // Metodo para seleccionar una moto y verificar la compra
+    private static void seleccionarMoto(List<Moto> motos, int presupuesto) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Selecciona una moto para comprar (ingresa el número): ");
+        for (int i = 0; i < motos.size(); i++) {
+            System.out.println((i + 1) + ". " + motos.get(i));
+        }
+
+        int seleccion = scanner.nextInt();
+        if (seleccion > 0 && seleccion <= motos.size()) {
+            Moto moto = motos.get(seleccion - 1);
+            verificarCompra(moto, presupuesto);
+        } else {
+            System.out.println("Selección inválida.");
+        }
+    }
+
+    // Metodo para verificar si un cliente puede comprar el auto o moto
+    private static void verificarCompra(Auto auto, int presupuesto) {
+        // Verificar si el precio está dentro del presupuesto o hasta un 10% más
+        int rangoSuperior = (int) (presupuesto * 1.10);
+
+        if (presupuesto >= auto.getPrecioLista()) {
+            System.out.println("¡Puedes comprar este auto!");
+        } else if (auto.getPrecioLista() <= rangoSuperior) {
+            System.out.println("Este auto está un 10% por encima de tu presupuesto, pero aún puedes comprarlo.");
+        } else {
+            System.out.println("Lo siento, no tienes suficiente presupuesto para este auto.");
+        }
+    }
+
+
+    private static void verificarCompra(Moto moto, int presupuesto) {
+        // Verificar si el precio está dentro del presupuesto o hasta un 10% más
+        int rangoSuperior = (int) (presupuesto * 1.10);
+
+        if (presupuesto >= moto.getPrecioLista()) {
+            System.out.println("¡Puedes comprar esta moto!");
+        } else if (moto.getPrecioLista() <= rangoSuperior) {
+            System.out.println("Esta moto está un 10% por encima de tu presupuesto, pero aún puedes comprarla.");
+        } else {
+            System.out.println("Lo siento, no tienes suficiente presupuesto para esta moto.");
+        }
+    }
+}
