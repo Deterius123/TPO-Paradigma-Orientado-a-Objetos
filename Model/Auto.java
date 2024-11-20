@@ -1,4 +1,4 @@
-
+package Model;
 
 public abstract class Auto implements Valuable{
 
