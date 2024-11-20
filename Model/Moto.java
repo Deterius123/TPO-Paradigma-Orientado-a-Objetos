@@ -14,12 +14,15 @@ public class Moto implements Valuable{
 
     private TiposDeMoto tipo;
 
-    public Moto(int modelo, String marca, int precioLista, TiposDeMoto tipo) {
+    private Agencia agencia;
+    public Moto(int modelo, String marca, int precioLista, TiposDeMoto tipo, Agencia agencia) {
         this.estadoDeCompra = EstadosDelVehiculo.A_LA_VENTA;
         this.modelo = modelo;
         this.marca = marca;
         this.precioLista = precioLista;
         this.tipo = tipo;
+        this.agencia = agencia;
+        agencia.agregarMoto(this);
     }
 
     public EstadosDelVehiculo getEstadoDeCompra() {
