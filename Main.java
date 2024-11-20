@@ -1,8 +1,8 @@
 import Model.*;
 
-import java.util.List;
 import java.util.ArrayList;
-
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -53,8 +53,95 @@ public class Main {
         Cliente cliente1 = new Cliente(100000, 123, true);
 
         // Mostramos la lista de autos y motos disponibles.
-        agenciaPrueba.mostrarAutos();
+        //agenciaPrueba.mostrarAutos();
 
-        agenciaPrueba.mostrarMotos();
+        //agenciaPrueba.mostrarMotos();
+
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("¡Bienvenido a la agencia!");
+
+        System.out.print("Por favor, ingresa tu presupuesto: ");
+        int presupuesto = scanner.nextInt();
+        scanner.nextLine(); // Consumir el salto de línea
+
+        boolean salir = false;
+        while (!salir) {
+            System.out.println("\nOpciones:");
+            System.out.println("1. Mostrar autos de gama baja");
+            System.out.println("2. Mostrar autos de gama media");
+            System.out.println("3. Mostrar autos de gama alta");
+            System.out.println("4. Seleccionar un auto para verificar compra");
+            System.out.println("5. Salir");
+            System.out.print("Elige una opción: ");
+            int opcion = scanner.nextInt();
+            scanner.nextLine(); // Consumir el salto de línea
+
+            switch (opcion) {
+                case 1:
+                    mostrarAutos(autosGamaBaja, "Baja");
+                    break;
+
+                case 2:
+                    mostrarAutos(autosGamaMedia, "Media");
+                    break;
+
+                case 3:
+                    mostrarAutos(autosGamaAlta, "Alta");
+                    break;
+
+                case 4:
+                    // Selección de auto para verificar compra
+                    System.out.println("Selecciona un auto ingresando su número (1 para baja, 2 para media, 3 para alta): ");
+                    int gamaSeleccionada = scanner.nextInt();
+                    scanner.nextLine(); // Consumir el salto de línea
+
+                    List<Auto> listaSeleccionada = null;
+                    switch (gamaSeleccionada) {
+                        case 1 -> listaSeleccionada = autosGamaBaja;
+                        case 2 -> listaSeleccionada = autosGamaMedia;
+                        case 3 -> listaSeleccionada = autosGamaAlta;
+                        default -> {
+                            System.out.println("Opción inválida.");
+                            continue;
+                        }
+                    }
+
+                    if (listaSeleccionada == null || listaSeleccionada.isEmpty()) {
+                        System.out.println("No hay autos disponibles en esta gama.");
+                        continue;
+                    }
+
+                    System.out.println("Autos disponibles:");
+                    for (int i = 0; i < listaSeleccionada.size(); i++) {
+                        System.out.println((i + 1) + ". " + listaSeleccionada.get(i));
+                    }
+
+                    System.out.print("Elige el auto ingresando su número: ");
+                    int autoSeleccionado = scanner.nextInt();
+                    scanner.nextLine(); // Consumir el salto de línea
+
+                    if (autoSeleccionado < 1 || autoSeleccionado > listaSeleccionada.size()) {
+                        System.out.println("Opción inválida.");
+                        continue;
+                    }
+
+                    Auto auto = listaSeleccionada.get(autoSeleccionado - 1);
+                    verificarCompra(auto, presupuesto);
+                    break;
+
+                case 5:
+                    salir = true;
+                    break;
+
+                default:
+                    System.out.println("Opción inválida. Intenta nuevamente.");
+            }
+        }
+
+        scanner.close();
+        System.out.println("¡Gracias por visitar la agencia!");
     }
 }
+
