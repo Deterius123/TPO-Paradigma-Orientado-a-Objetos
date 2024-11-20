@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class AutoGamaAlta extends Auto {
 
     public AutoGamaAlta(int kilometraje, String marca, int modelo, int precioLista, Agencia agencia) {
@@ -10,7 +12,7 @@ public class AutoGamaAlta extends Auto {
         // Si el cliente tiene tarjeta y su presupuesto cubre el precio final
         if (cliente.isTarjeta() && cliente.getPresupuesto() >= precioFinal) {
             System.out.println("El cliente puede comprar el auto de gama alta usando tarjeta. Precio final: " + precioFinal);
-            this.setEstadoDeCompra(EstadosDelVehiculo.VENDIDO); // Cambia el estado a vendido
+            decidirComprar();
         }
         // el cliente no puede comprar autos de alta gama con efectivo
         // Si el cliente no tiene suficiente presupuesto para comprar el auto
