@@ -78,6 +78,27 @@ public class Moto implements Valuable{
     }
 
     @Override
+    public void decidirComprar(){
+        Scanner sc= new Scanner(System.in);
+        while(true){
+            System.out.println("¿Quiere comprar el moto? (0 para si, 1 para no):");
+            String decision = sc.nextLine();
+            int numero = Integer.parseInt(decision);
+            if (numero == 1) {
+                System.out.println("Decidio no comprar el moto");
+                break;
+            }else if(numero == 0){
+                System.out.println("Decidio comprar el moto");
+                this.setEstadoDeCompra(EstadosDelVehiculo.VENDIDO); // Cambia el estado a vendido
+                break;
+            }else{
+                System.out.println("Ingresó un numero incorrecto, intente nuevamente");
+            }
+        }
+    }
+
+
+    @Override
     public double calcularPrecio() {
         double precioVerdadero = precioLista;
         if(tipo == TiposDeMoto.DEPORTIVA){
