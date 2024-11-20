@@ -9,12 +9,11 @@ public class Main {
     public static void main(String[] args) {
 
         List<Auto> listaAutos = new ArrayList<>();
-        List<Cliente> listaClientes = new ArrayList<>();
         List<Moto> listaMotos = new ArrayList<>();
 
 
         // Creamos instancia de agencia.
-        Agencia agenciaPrueba = new Agencia(listaAutos, listaClientes, listaMotos);
+        Agencia agenciaPrueba = new Agencia(listaAutos, listaMotos);
 
         // Creamos algunos autos y los agregamos a agencia.
 

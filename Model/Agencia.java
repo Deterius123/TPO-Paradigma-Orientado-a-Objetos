@@ -4,9 +4,8 @@ import java.util.*;
 
 public class Agencia {
 
-        public Agencia(List<Auto> listaAutos, List<Cliente> listaClientes, List<Moto> listaMotos) {
+        public Agencia(List<Auto> listaAutos, List<Moto> listaMotos) {
             this.listaAutos = listaAutos;
-            this.listaClientes = listaClientes;
             this.listaMotos = listaMotos;
         }
 
@@ -28,12 +27,10 @@ public class Agencia {
 
         private List<Auto> listaAutos; // Lista donde estaran almacenados los autos ingresados
 
-        private List<Cliente> listaClientes; //Lista donde estaran ingreasdos los clientes
-
         private List<Moto> listaMotos; //Lista donde estaran almacenados las motos ingresadas
 //---------------------------------------------------------------------------------------------------------------------------------------
         // Este metodo va a filtrar los autos menores a cierto precio
-        public List<Auto> filtrarAutosMenoresDe(int precio) {
+        public void filtrarAutosMenoresDe(int precio) {
             List<Auto> autosMenores = new ArrayList<>();  // Lista para autos menores o iguales al precio
 
             double limitePresupuesto = precio * 1.10; // Calcula el límite superior (10% más del precio ingresado)
@@ -48,15 +45,16 @@ public class Agencia {
             // si lo está avisa mostrando un mensaje en pantalla.
                 if (autosMenores.isEmpty()){
                     System.out.println("No se encontraron autos menores a ese precio");
-                    return null;
                 }else{ // Si no está vacia devuelve la lista entera.
-                    return autosMenores;
+                    for (int i = 0; i < autosMenores.size(); i++) {
+                        System.out.println((i + 1) + ". " + autosMenores.get(i));
+                    }
                 }
         }
 
     //---------------------------------------------------------------------------------------------------------------------------------------
     // Este metodo va a filtrar las motos menores a cierto precio
-    public List<Moto> filtrarMotosMenoresDe(int precio) {
+    public void filtrarMotosMenoresDe(int precio) {
         List<Moto> motosMenores = new ArrayList<>();  // Lista para motos menores o iguales al precio
 
         double limitePresupuesto = precio * 1.10; // Calcula el límite superior (10% más del precio ingresado)
@@ -71,15 +69,16 @@ public class Agencia {
         // si lo está avisa mostrando un mensaje en pantalla.
         if (motosMenores.isEmpty()){
             System.out.println("No se encontraron motos menores a ese precio");
-            return null;
         }else{ // // Si no está vacia, devuelve lo que tiene en el momento.
-            return motosMenores;
+            for (int i = 0; i < motosMenores.size(); i++) {
+                System.out.println((i + 1) + ". " + motosMenores.get(i));
+            }
         }
     }
 
 //---------------------------------------------------------------------------------------------------------------------------------------
         // Metodo para filtrar autos por modelo.
-        public List<Auto> filtrarAutosPorModelo(int modelo) {
+        public void filtrarAutosPorModelo(int modelo) {
             List<Auto> autosPorModelo = new ArrayList<>(); //Lista para autos del modelo que buscamos
             //Si el auto es del modelo que buscamos se le agrega a la lista
             for (Auto auto : listaAutos) {
@@ -89,9 +88,10 @@ public class Agencia {
             }
                 if (autosPorModelo.isEmpty()){  // Se verifica si la lista de autos por modelo está vacia devuelve un mensaje por pantalla.
                     System.out.println("No se encontraron autos de ese modelo");
-                    return null;
                 }else{  // Si no está vacia, devuelve lo que tiene en el momento.
-                    return autosPorModelo;
+                    for (int i = 0; i < autosPorModelo.size(); i++) {
+                        System.out.println((i + 1) + ". " + autosPorModelo.get(i));
+                    }
                 }
         }
     //---------------------------------------------------------------------------------------------------------------------------------------
@@ -108,7 +108,7 @@ public class Agencia {
 
     //---------------------------------------------------------------------------------------------------------------------------------------
     // Metodo para filtrar motos por modelo.
-    public List<Moto> filtrarMotosPorModelo(int modelo) {
+    public void filtrarMotosPorModelo(int modelo) {
         List<Moto> motosPorModelo = new ArrayList<>(); //Lista para motos del modelo que buscamos
         //Si la moto es del modelo que buscamos se le agrega a la lista
         for (Moto moto : listaMotos) {
@@ -120,15 +120,16 @@ public class Agencia {
         // si lo esta avisa devolviendo un mensaje por pantalla.
         if (motosPorModelo.isEmpty()){
             System.out.println("No se encontraron motos de ese modelo");
-            return null;
         }else{  // Si no está vacia, devuelve lo que tiene en el momento.
-            return motosPorModelo;
+            for (int i = 0; i < motosPorModelo.size(); i++) {
+                System.out.println((i + 1) + ". " + motosPorModelo.get(i));
+            }
         }
     }
 
 //---------------------------------------------------------------------------------------------------------------------------------------
         // Metodo para sugerir los 3 autos con menor diferencia respecto al presupuesto
-        public List<Auto> sugerirAutoParaCliente(Cliente cliente) {
+        public void sugerirAutoParaCliente(Cliente cliente) {
 
             int presupuesto = cliente.getPresupuesto();
             List<Auto> autosEnRango = new ArrayList<>(); // Esto va a ser una lista donde van a estar los autos que esten un 10% mayor y menor al presupuesto.
@@ -148,7 +149,6 @@ public class Agencia {
             }// Se verifica si la lista de autos dentro del rango de precio está vacia devuelve un mensaje por pantalla.
             if (autosEnRango.isEmpty()) {
                 System.out.println("No existen autos para sugerir a este cliente");
-                return null;
             } else {
                 // Ordenar los autos por la diferencia entre su precio y el presupuesto
                 autosEnRango.sort((auto1, auto2) -> {
@@ -164,20 +164,24 @@ public class Agencia {
 
                     // Si la lista tiene más de 3 autos, se seleccionan los primeros 3
 
-                    return autosEnRango.subList(0, 3); // Lo que hace el subList es extrar una parte de una lista creando una "sublista" ya existente.
+                    for (int i = 0; i < 3; i++) {
+                        System.out.println((i + 1) + ". " + listaAutos.get(i));
+                    }
                     // Los parametros subList(Parametro de inicio, parametro de fin) tienen esa logica, funcionan con el indice de una lista y se
                     // les aclara desde donde comienzan y hasta que elemento llegan.
 
                 } catch (IndexOutOfBoundsException e) {
                     // Si hay menos de 3 autos, devolver la lista como está.
-                    return autosEnRango;
+                    for (int i = 0; i < autosEnRango.size(); i++) {
+                        System.out.println((i + 1) + ". " + autosEnRango.get(i));
+                    }
                 }
             }
         }
 
     //---------------------------------------------------------------------------------------------------------------------------------------
     // Metodo para sugerir las 3 motos con menor diferencia respecto al presupuesto
-    public List<Moto> sugerirMotoParaCliente(Cliente cliente) {
+    public void sugerirMotoParaCliente(Cliente cliente) {
 
         int presupuesto = cliente.getPresupuesto();
         List<Moto> motosEnRango = new ArrayList<>(); // Esto va a ser una lista donde van a estar las motos que esten un 10% mayor y menor al presupuesto.
@@ -197,7 +201,6 @@ public class Agencia {
         }// Si la lista de motos dentro del rango de precio está vacia devuelve un mensaje por pantalla.
         if (motosEnRango.isEmpty()) {
             System.out.println("No existen autos para sugerir a este cliente");
-            return null;
         } else {
             // Ordenar los autos por la diferencia entre su precio y el presupuesto
             motosEnRango.sort((moto1, moto2) -> {
@@ -217,10 +220,14 @@ public class Agencia {
                 // Lo que hace el subList es extrar una parte de una lista creando una "sublista" ya existente.
                 // Los parametros subList(Parametro de inicio, parametro de fin) tienen esa logica,
                 // funcionan con el indice de una lista y se les aclara desde donde comienzan y hasta que elemento llegan.
-                return motosEnRango.subList(0, 3);
+                for (int i = 0; i < 3; i++) {
+                    System.out.println((i + 1) + ". " + motosEnRango.get(i));
+                }
             } catch (IndexOutOfBoundsException e) {
                 // Si hay menos de 3 motos, devolver la lista como está.
-                return motosEnRango;
+                for (int i = 0; i < motosEnRango.size(); i++) {
+                    System.out.println((i + 1) + ". " + motosEnRango.get(i));
+                }
             }
         }
     }
@@ -230,7 +237,7 @@ public class Agencia {
 
     //---------------------------------------------------------------------------------------------------------------------------------------
             // Metodo para filtrar autos por marca.
-    public List<Auto> filtrarAutosPorMarca (String marca){
+    public void filtrarAutosPorMarca (String marca){
 
             List<Auto> autosPorMarca = new ArrayList<>(); // Lista para autos que sean de la marca que buscamos
 
@@ -243,15 +250,16 @@ public class Agencia {
         }
         if (autosPorMarca.isEmpty()){   // Se verifica si la lista de autos por marca está vacia devuelve un mensaje por pantalla.
             System.out.println("No se encontro ningun auto con esa marca");
-            return null;
         }else { // Si no está vacia, devuelve lo que tiene en el momento.
-            return autosPorMarca; //Devuelve la lista
+            for (int i = 0; i < autosPorMarca.size(); i++) {
+                System.out.println((i + 1) + ". " + autosPorMarca.get(i));
+            }
             }
         }
 
     //---------------------------------------------------------------------------------------------------------------------------------------
     // Metodo para filtrar motos por marca.
-    public List<Moto> filtrarMotosPorMarca (String marca){
+    public void filtrarMotosPorMarca (String marca){
 
         List<Moto> motosPorMarca = new ArrayList<>(); // Lista para motos que sean de la marca que buscamos
 
@@ -264,9 +272,10 @@ public class Agencia {
         }
         if (motosPorMarca.isEmpty()){   // Se verifica si la lista de motos por marca está vacia devuelve un mensaje por pantalla.
             System.out.println("No se encontro ninguna moto con esa marca");
-            return null;
         }else { // Si no está vacia, devuelve lo que tiene en el momento.
-            return motosPorMarca; //Devuelve la lista
+            for (int i = 0; i < motosPorMarca.size(); i++) {
+                System.out.println((i + 1) + ". " + motosPorMarca.get(i));
+            }
         }
     }
 
