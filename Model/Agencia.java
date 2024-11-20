@@ -3,10 +3,12 @@ package Model;
 import java.util.*;
 
 public class Agencia {
+        private List<Auto> listaAutos;
+        private List<Moto> listaMotos;
 
         public Agencia() {
-            List<Auto> listaAutos = new ArrayList<>();
-            List<Moto> listaMotos = new ArrayList<>();
+            this.listaAutos = new ArrayList<>();
+            this.listaMotos = new ArrayList<>();
         }
 
         public void mostrarAutos() {
@@ -31,9 +33,6 @@ public class Agencia {
         }
 //---------------------------------------------------------------------------------------------------------------------------------------
 
-        private List<Auto> listaAutos; // Lista donde estaran almacenados los autos ingresados
-
-        private List<Moto> listaMotos; //Lista donde estaran almacenados las motos ingresadas
 //---------------------------------------------------------------------------------------------------------------------------------------
         // Este metodo va a filtrar los autos menores a cierto precio
         public void filtrarAutosMenoresDe(int precio) {
