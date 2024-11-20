@@ -1,14 +1,12 @@
-package Model;
-
 import java.util.*;
 
 public class Agencia {
 
-    public Agencia(List<Auto> listaAutos, List<Cliente> listaClientes, List<Moto> listaMotos) {
+        public Agencia(List<Auto> listaAutos, List<Cliente> listaClientes, List<Moto> listaMotos) {
             this.listaAutos = listaAutos;
             this.listaClientes = listaClientes;
             this.listaMotos = listaMotos;
-    }
+        }
 
 //---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -17,8 +15,7 @@ public class Agencia {
         private List<Cliente> listaClientes; //Lista donde estaran ingreasdos los clientes
 
         private List<Moto> listaMotos; //Lista donde estaran almacenados las motos ingresadas
-
-    //---------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------
         // Este metodo va a filtrar los autos menores a cierto precio
         public List<Auto> filtrarAutosMenoresDe(int precio) {
             List<Auto> autosMenores = new ArrayList<>();  // Lista para autos menores o iguales al precio

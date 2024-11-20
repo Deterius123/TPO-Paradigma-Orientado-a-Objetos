@@ -1,5 +1,3 @@
-package Model;
-
 public class Moto implements Valuable{
 
     private EstadosDelVehiculo estadoDeCompra;
