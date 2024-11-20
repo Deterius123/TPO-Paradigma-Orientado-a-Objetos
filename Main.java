@@ -36,24 +36,6 @@ public class Main {
         Auto auto14 = new AutoGamaAlta(100, "Rolls-Royce", 2018, 400000, agenciaPrueba);
         Auto auto15 = new AutoGamaAlta(345, "Porsche", 2019, 150000, agenciaPrueba);
 
-        // Horrible pero es la unica forma de demostrar que funciona :)
-        agenciaPrueba.agregarAuto(auto1);
-        agenciaPrueba.agregarAuto(auto2);
-        agenciaPrueba.agregarAuto(auto3);
-        agenciaPrueba.agregarAuto(auto4);
-        agenciaPrueba.agregarAuto(auto5);
-        agenciaPrueba.agregarAuto(auto6);
-        agenciaPrueba.agregarAuto(auto7);
-        agenciaPrueba.agregarAuto(auto8);
-        agenciaPrueba.agregarAuto(auto9);
-        agenciaPrueba.agregarAuto(auto10);
-        agenciaPrueba.agregarAuto(auto11);
-        agenciaPrueba.agregarAuto(auto12);
-        agenciaPrueba.agregarAuto(auto13);
-        agenciaPrueba.agregarAuto(auto14);
-        agenciaPrueba.agregarAuto(auto15);
-
-
         // Creamos un cliente y un presupuesto y lo añadimos a la agencia.
 
     }
