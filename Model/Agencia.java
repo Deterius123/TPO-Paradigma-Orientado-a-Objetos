@@ -244,7 +244,7 @@ public class Agencia {
         // Si la marca es igual a la buscada se la agrega a la lista
         // toUpperCase() se asegura que la marca empiece en mayuscula
         for (Auto auto : listaAutos) {
-            if (auto.getMarca().equals(marca.toUpperCase())) {
+            if (auto.getMarca().equals(mayusculaPrimeraLetra(marca))) {
                         autosPorMarca.add(auto);
             }
         }
@@ -266,7 +266,7 @@ public class Agencia {
         // Si la marca es igual a la buscada se la agrega a la lista
         // toUpperCase() se asegura que la marca empiece en mayuscula
         for (Moto moto : listaMotos) {
-            if (moto.getMarca().equals(marca.toUpperCase())) {
+            if (moto.getMarca().equals(mayusculaPrimeraLetra(marca))) {
                 motosPorMarca.add(moto);
             }
         }
@@ -279,5 +279,11 @@ public class Agencia {
         }
     }
 
+    private String mayusculaPrimeraLetra(String texto) {
+        if (texto == null || texto.isEmpty()) {
+            return texto; // Retorna el texto original si es nulo o vacío
+        }
+        return texto.substring(0, 1).toUpperCase() + texto.substring(1); // Convierte la primera letra
+    }
 
 }
