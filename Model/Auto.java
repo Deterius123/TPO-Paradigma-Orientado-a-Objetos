@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Scanner;
+
 public abstract class Auto implements Valuable{
 
     private int kilometraje;
