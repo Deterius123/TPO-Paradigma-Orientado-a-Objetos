@@ -1,7 +1,7 @@
 public class AutoGamaMedia extends Auto {
 
-    public AutoGamaMedia(int kilometraje, String marca, int modelo, int precioLista) {
-        super(kilometraje, marca, modelo, precioLista);
+    public AutoGamaMedia(int kilometraje, String marca, int modelo, int precioLista, Agencia agencia) {
+        super(kilometraje, marca, modelo, precioLista, agencia);
     }
 
     public void intentarComprar(Cliente cliente) {

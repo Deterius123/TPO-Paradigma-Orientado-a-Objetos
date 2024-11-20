@@ -1,3 +1,5 @@
+
+
 public abstract class Auto implements Valuable{
 
     private int kilometraje;
@@ -10,12 +12,16 @@ public abstract class Auto implements Valuable{
 
     private int precioLista;
 
-    public Auto(int kilometraje, String marca, int modelo, int precioLista){
+    private Agencia agencia;
+
+    public Auto(int kilometraje, String marca, int modelo, int precioLista, Agencia agencia){
         this.kilometraje = kilometraje;
         this.marca = marca;
         this.modelo = modelo;
         this.precioLista = precioLista;
         this.estadoDeCompra = EstadosDelVehiculo.A_LA_VENTA;
+        this.agencia = agencia;
+        agencia.agregarAuto(this);
     }
 
     public abstract void intentarComprar(Cliente cliente);
@@ -66,4 +72,12 @@ public abstract class Auto implements Valuable{
 
     @Override
     public abstract double calcularPrecio();
+
+    public Agencia getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(Agencia agencia) {
+        this.agencia = agencia;
+    }
 }
