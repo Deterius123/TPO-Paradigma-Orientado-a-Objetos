@@ -10,6 +10,14 @@ public class Agencia {
             this.listaMotos = listaMotos;
         }
 
+        public void mostrarAutos() {
+            System.out.println("Lista de autos:");
+            for (Auto auto: listaAutos) {
+                System.out.println(auto);
+            }
+        }
+
+
 //---------------------------------------------------------------------------------------------------------------------------------------
 
         private List<Auto> listaAutos; // Lista donde estaran almacenados los autos ingresados
