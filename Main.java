@@ -8,6 +8,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+
+        // Estas colecciones deben estar en una clase aparte.
         List<Auto> listaAutos = new ArrayList<>();
         List<Cliente> listaClientes = new ArrayList<>();
         List<Moto> listaMotos = new ArrayList<>();
@@ -36,25 +38,13 @@ public class Main {
         Auto auto14 = new AutoGamaAlta(100, "Rolls-Royce", 2018, 400000, agenciaPrueba);
         Auto auto15 = new AutoGamaAlta(345, "Porsche", 2019, 150000, agenciaPrueba);
 
-        // Horrible pero es la unica forma de demostrar que funciona :)
-        agenciaPrueba.agregarAuto(auto1);
-        agenciaPrueba.agregarAuto(auto2);
-        agenciaPrueba.agregarAuto(auto3);
-        agenciaPrueba.agregarAuto(auto4);
-        agenciaPrueba.agregarAuto(auto5);
-        agenciaPrueba.agregarAuto(auto6);
-        agenciaPrueba.agregarAuto(auto7);
-        agenciaPrueba.agregarAuto(auto8);
-        agenciaPrueba.agregarAuto(auto9);
-        agenciaPrueba.agregarAuto(auto10);
-        agenciaPrueba.agregarAuto(auto11);
-        agenciaPrueba.agregarAuto(auto12);
-        agenciaPrueba.agregarAuto(auto13);
-        agenciaPrueba.agregarAuto(auto14);
-        agenciaPrueba.agregarAuto(auto15);
-
 
         // Creamos un cliente y un presupuesto y lo añadimos a la agencia.
+        Cliente cliente1 = new Cliente(1000000, 123, true);
+
+
+        // Mostrar los autos disponibles.
+        System.out.println("Autos disponibles de la agencia: ");
 
     }
 }
