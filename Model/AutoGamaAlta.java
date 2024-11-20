@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import Model;
 
 public class AutoGamaAlta extends Auto {
 
