@@ -1,19 +1,16 @@
 import Model.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+import java.util.List;
+
 
 public class Main {
 
     public static void main(String[] args) {
 
-        List<Auto> listaAutos = new ArrayList<>();
-        List<Moto> listaMotos = new ArrayList<>();
-
 
         // Creamos instancia de agencia.
-        Agencia agenciaPrueba = new Agencia(listaAutos, listaMotos);
+        Agencia agenciaPrueba = new Agencia();
 
         // Creamos algunos autos y los agregamos a agencia.
 
@@ -50,8 +47,7 @@ public class Main {
 
         // Creamos un cliente y un presupuesto y lo añadimos a la agencia.
         Cliente cliente1 = new Cliente(45000, 123, true);
-        System.out.println("Intentar Comprar");
-        auto15.intentarComprar(cliente1);
+
         // Mostramos la lista de autos y motos disponibles.
         //agenciaPrueba.mostrarAutos();
 
@@ -61,10 +57,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("¡Bienvenido a la agencia!");
-
-        System.out.print("Por favor, ingresa tu presupuesto: ");
-        int presupuesto = scanner.nextInt();
-        scanner.nextLine(); // Consumir el salto de línea
 
         boolean salir = false;
         while (!salir) {
@@ -80,13 +72,12 @@ public class Main {
             switch (opcion) {
                 case 1:
                     // Mostrar autos por diferentes filtros
-                    mostrarAutosPorFiltros(listaAutos, presupuesto, agenciaPrueba);
-
+                    mostrarAutosPorFiltros(agenciaPrueba);
                     break;
 
                 case 2:
                     // Mostrar motos por diferentes filtros
-                    mostrarMotosPorFiltros(listaMotos, presupuesto, agenciaPrueba);
+                    mostrarMotosPorFiltros(agenciaPrueba);
                     break;
 
                 case 3:
@@ -97,10 +88,10 @@ public class Main {
 
                     if (tipoSeleccionado == 1) {
                         // Selección de auto
-                        seleccionarAuto(listaAutos, cliente1);
+                        seleccionarAuto(agenciaPrueba, cliente1);
                     } else if (tipoSeleccionado == 2) {
                         // Selección de moto
-                        seleccionarMoto(listaMotos, cliente1);
+                        seleccionarMoto(agenciaPrueba, cliente1);
                     } else {
                         System.out.println("Opción inválida.");
                     }
@@ -121,7 +112,7 @@ public class Main {
     }
 
     // Metodo para mostrar autos según los filtros seleccionados
-    private static void mostrarAutosPorFiltros(List<Auto> listaAutos, int presupuesto, Agencia agencia) {
+    private static void mostrarAutosPorFiltros(Agencia agencia) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nFiltros disponibles para autos:");
         System.out.println("1. Ver por marca");
@@ -156,7 +147,7 @@ public class Main {
     }
 
     // Metodo para mostrar motos según los filtros seleccionados
-    private static void mostrarMotosPorFiltros(List<Moto> listaMotos, int presupuesto, Agencia agencia) {
+    private static void mostrarMotosPorFiltros(Agencia agencia) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nFiltros disponibles para motos:");
         System.out.println("1. Ver por marca");
@@ -192,8 +183,9 @@ public class Main {
     }
 
     // Metodo para seleccionar un auto y verificar la compra
-    private static void seleccionarAuto(List<Auto> listaAutos, Cliente cliente) {
+    private static void seleccionarAuto(Agencia agencia, Cliente cliente) {
         Scanner scanner = new Scanner(System.in);
+        List<Auto> listaAutos = agencia.getListaAutos();  // Obtener la lista de autos desde la agencia
         System.out.println("Selecciona un auto para comprar (ingresa el número): ");
         for (int i = 0; i < listaAutos.size(); i++) {
             System.out.println((i + 1) + ". " + listaAutos.get(i));
@@ -208,9 +200,11 @@ public class Main {
         }
     }
 
+
     // Metodo para seleccionar una moto y verificar la compra
-    private static void seleccionarMoto(List<Moto> listaMotos, Cliente cliente) {
+    private static void seleccionarMoto(Agencia agencia, Cliente cliente) {
         Scanner scanner = new Scanner(System.in);
+        List<Moto> listaMotos = agencia.getListaMotos();  // Obtener la lista de motos desde la agencia
         System.out.println("Selecciona una moto para comprar (ingresa el número): ");
         for (int i = 0; i < listaMotos.size(); i++) {
             System.out.println((i + 1) + ". " + listaMotos.get(i));
@@ -224,4 +218,5 @@ public class Main {
             System.out.println("Selección inválida.");
         }
     }
+
 }

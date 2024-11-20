@@ -4,9 +4,9 @@ import java.util.*;
 
 public class Agencia {
 
-        public Agencia(List<Auto> listaAutos, List<Moto> listaMotos) {
-            this.listaAutos = listaAutos;
-            this.listaMotos = listaMotos;
+        public Agencia() {
+            List<Auto> listaAutos = new ArrayList<>();
+            List<Moto> listaMotos = new ArrayList<>();
         }
 
         public void mostrarAutos() {
@@ -22,7 +22,13 @@ public class Agencia {
                 System.out.println(moto);
             }
         }
+        public List<Auto> getListaAutos() {
+            return listaAutos;
+        }
 
+        public List<Moto> getListaMotos() {
+            return listaMotos;
+        }
 //---------------------------------------------------------------------------------------------------------------------------------------
 
         private List<Auto> listaAutos; // Lista donde estaran almacenados los autos ingresados
@@ -278,12 +284,13 @@ public class Agencia {
             }
         }
     }
-
+    //---------------------------------------------------------------------------------------------------------------------------------------
     private String mayusculaPrimeraLetra(String texto) {
         if (texto == null || texto.isEmpty()) {
             return texto; // Retorna el texto original si es nulo o vacío
         }
         return texto.substring(0, 1).toUpperCase() + texto.substring(1); // Convierte la primera letra
     }
+    //---------------------------------------------------------------------------------------------------------------------------------------
 
 }
