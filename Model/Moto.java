@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Scanner;
+
 public class Moto implements Valuable{
 
     private EstadosDelVehiculo estadoDeCompra;
