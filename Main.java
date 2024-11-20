@@ -1,5 +1,6 @@
 import Model.Agencia;
-import Model.*;
+import Model.Auto;
+import Model.Moto;
 
 
 public class Main {

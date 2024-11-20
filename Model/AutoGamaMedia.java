@@ -1,3 +1,5 @@
+package Model;
+
 public class AutoGamaMedia extends Auto {
 
     public AutoGamaMedia(int kilometraje, String marca, int modelo, int precioLista, Agencia agencia) {

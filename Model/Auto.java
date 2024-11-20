@@ -1,4 +1,4 @@
-import java.util.Scanner;
+package Model;
 
 public abstract class Auto implements Valuable{
 
@@ -72,26 +72,6 @@ public abstract class Auto implements Valuable{
 
     @Override
     public abstract double calcularPrecio();
-
-    @Override
-    public void decidirComprar(){
-        Scanner sc= new Scanner(System.in);
-        while(true){
-            System.out.println("¿Quiere comprar el auto? (0 para si, 1 para no):");
-            String decision = sc.nextLine();
-            int numero = Integer.parseInt(decision);
-            if (numero == 1) {
-                System.out.println("Decidio no comprar el auto");
-                break;
-            }else if(numero == 0){
-                System.out.println("Decidio comprar el auto");
-                this.setEstadoDeCompra(EstadosDelVehiculo.VENDIDO); // Cambia el estado a vendido
-                break;
-            }else{
-                System.out.println("Ingresó un numero incorrecto, intente nuevamente");
-            }
-        }
-    }
 
     public Agencia getAgencia() {
         return agencia;

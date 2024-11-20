@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class AutoGamaAlta extends Auto {
 
     public AutoGamaAlta(int kilometraje, String marca, int modelo, int precioLista, Agencia agencia) {

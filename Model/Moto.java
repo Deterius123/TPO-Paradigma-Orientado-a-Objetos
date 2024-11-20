@@ -1,4 +1,4 @@
-import java.util.Scanner;
+package Model;
 
 public class Moto implements Valuable{
 
@@ -12,16 +12,12 @@ public class Moto implements Valuable{
 
     private TiposDeMoto tipo;
 
-    private Agencia agencia;
-
-    public Moto(int modelo, String marca, int precioLista, TiposDeMoto tipo, Agencia agencia) {
+    public Moto(int modelo, String marca, int precioLista, TiposDeMoto tipo) {
         this.estadoDeCompra = EstadosDelVehiculo.A_LA_VENTA;
         this.modelo = modelo;
         this.marca = marca;
         this.precioLista = precioLista;
         this.tipo = tipo;
-        this.agencia = agencia;
-        agencia.agregarMoto(this);
     }
 
     public EstadosDelVehiculo getEstadoDeCompra() {
@@ -69,11 +65,11 @@ public class Moto implements Valuable{
 
         if (cliente.isTarjeta() && cliente.getPresupuesto() >= precioFinal) {
             System.out.println("El cliente puede comprar la moto usando tarjeta. Precio final: " + precioFinal);
-            decidirComprar();
+            this.setEstadoDeCompra(EstadosDelVehiculo.VENDIDO); // Cambia el estado a vendido
 
         } else if (!cliente.isTarjeta() && cliente.getPresupuesto() >= precioLista) {
             System.out.println("El cliente puede comprar la moto en efectivo. Precio: " + precioLista);
-            decidirComprar();
+            this.setEstadoDeCompra(EstadosDelVehiculo.VENDIDO); // Cambia el estado a vendido
         }else {
             System.out.println("El cliente no tiene suficiente presupuesto para esta moto.");
         }
@@ -86,37 +82,9 @@ public class Moto implements Valuable{
             precioVerdadero = precioLista * 1.25;
         } else if (tipo == TiposDeMoto.SCOOTER) {
             precioVerdadero = precioLista * 1.15;
-        } else if (tipo == TiposDeMoto.DOBLE_PROPOSITO) {
+        } else {
             precioVerdadero = precioLista * 1.05;
         }
         return precioVerdadero;
-    }
-
-    @Override
-    public void decidirComprar() {
-        Scanner sc= new Scanner(System.in);
-        while(true){
-            System.out.println("¿Quiere comprar la moto? (0 para si, 1 para no):");
-            String decision = sc.nextLine();
-            int numero = Integer.parseInt(decision);
-            if (numero == 1) {
-                System.out.println("Decidio no comprar la moto");
-                break;
-            }else if(numero == 0){
-                System.out.println("Decidio comprar la moto");
-                this.setEstadoDeCompra(EstadosDelVehiculo.VENDIDO); // Cambia el estado a vendido
-                break;
-            }else{
-                System.out.println("Ingresó un numero incorrecto, intente nuevamente");
-            }
-        }
-    }
-
-    public Agencia getAgencia() {
-        return agencia;
-    }
-
-    public void setAgencia(Agencia agencia) {
-        this.agencia = agencia;
     }
 }

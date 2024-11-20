@@ -1,3 +1,5 @@
+package Model;
+
 public class AutoGamaBaja extends Auto {
 
     public AutoGamaBaja(int kilometraje, String marca, int modelo, int precioLista, Agencia agencia) {
