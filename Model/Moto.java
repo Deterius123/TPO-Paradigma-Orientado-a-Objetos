@@ -73,7 +73,7 @@ public class Moto implements Valuable{
             System.out.println("El cliente puede comprar la moto usando tarjeta. Precio final: " + precioFinal);
             this.setEstadoDeCompra(EstadosDelVehiculo.VENDIDO); // Cambia el estado a vendido
 
-        } else if (!cliente.isTarjeta() && cliente.getPresupuesto() >= precioLista) {
+        } else if (cliente.getPresupuesto() >= precioLista) {
             System.out.println("El cliente puede comprar la moto en efectivo. Precio: " + precioLista);
             this.setEstadoDeCompra(EstadosDelVehiculo.VENDIDO); // Cambia el estado a vendido
         }else {
