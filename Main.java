@@ -225,17 +225,4 @@ public class Main {
             System.out.println("Selección inválida.");
         }
     }
-
-    private static void verificarCompra(Moto moto, int presupuesto) {
-        // Verificar si el precio está dentro del presupuesto o hasta un 10% más
-        int rangoSuperior = (int) (presupuesto * 1.10);
-
-        if (presupuesto >= moto.getPrecioLista()) {
-            System.out.println("¡Puedes comprar esta moto!");
-        } else if (moto.getPrecioLista() <= rangoSuperior) {
-            System.out.println("Esta moto está un 10% por encima de tu presupuesto, pero aún puedes comprarla.");
-        } else {
-            System.out.println("Lo siento, no tienes suficiente presupuesto para esta moto.");
-        }
-    }
 }
