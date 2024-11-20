@@ -102,4 +102,10 @@ public abstract class Auto implements Valuable{
     public void setAgencia(Agencia agencia) {
         this.agencia = agencia;
     }
+
+    public String toString() {
+        return "Auto: " + this + ", Marca: " + marca + ", Modelo: " + modelo;
+    }
+}
+
 }
