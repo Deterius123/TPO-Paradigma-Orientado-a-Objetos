@@ -36,25 +36,25 @@ public class Main {
         Auto auto14 = new AutoGamaAlta(100, "Rolls-Royce", 2018, 400000, agenciaPrueba);
         Auto auto15 = new AutoGamaAlta(345, "Porsche", 2019, 150000, agenciaPrueba);
 
-        // Horrible pero es la unica forma de demostrar que funciona :)
-        agenciaPrueba.agregarAuto(auto1);
-        agenciaPrueba.agregarAuto(auto2);
-        agenciaPrueba.agregarAuto(auto3);
-        agenciaPrueba.agregarAuto(auto4);
-        agenciaPrueba.agregarAuto(auto5);
-        agenciaPrueba.agregarAuto(auto6);
-        agenciaPrueba.agregarAuto(auto7);
-        agenciaPrueba.agregarAuto(auto8);
-        agenciaPrueba.agregarAuto(auto9);
-        agenciaPrueba.agregarAuto(auto10);
-        agenciaPrueba.agregarAuto(auto11);
-        agenciaPrueba.agregarAuto(auto12);
-        agenciaPrueba.agregarAuto(auto13);
-        agenciaPrueba.agregarAuto(auto14);
-        agenciaPrueba.agregarAuto(auto15);
+        // Moto
+        Moto moto1 = new Moto(2020, "Yamaha", 100000, TiposDeMoto.DEPORTIVA, agenciaPrueba);
+        Moto moto2 = new Moto(2021, "Honda", 120000, TiposDeMoto.SCOOTER, agenciaPrueba);
+        Moto moto3 = new Moto(2019, "Suzuki", 95000, TiposDeMoto.DOBLE_PROPOSITO, agenciaPrueba);
+        Moto moto4 = new Moto(2022, "Kawasaki", 150000, TiposDeMoto.DEPORTIVA, agenciaPrueba);
+        Moto moto5 = new Moto(2020, "BMW", 200000, TiposDeMoto.DOBLE_PROPOSITO, agenciaPrueba);
+        Moto moto6 = new Moto(2021, "Harley-Davidson", 250000, TiposDeMoto.DEPORTIVA, agenciaPrueba);
+        Moto moto7 = new Moto(2018, "Ducati", 180000, TiposDeMoto.SCOOTER, agenciaPrueba);
+        Moto moto8 = new Moto(2022, "Triumph", 220000, TiposDeMoto.DOBLE_PROPOSITO, agenciaPrueba);
+        Moto moto9 = new Moto(2021, "Aprilia", 170000, TiposDeMoto.SCOOTER, agenciaPrueba);
+        Moto moto10 = new Moto(2023, "KTM", 210000, TiposDeMoto.DEPORTIVA, agenciaPrueba);
 
 
         // Creamos un cliente y un presupuesto y lo añadimos a la agencia.
+        Cliente cliente1 = new Cliente(100000, 123, true);
 
+        // Mostramos la lista de autos y motos disponibles.
+        agenciaPrueba.mostrarAutos();
+
+        agenciaPrueba.mostrarMotos();
     }
 }

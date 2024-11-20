@@ -104,6 +104,8 @@ public abstract class Auto implements Valuable{
     }
 
     public String toString() {
-        return "Marca: " + marca + ", Modelo: " + modelo;
+        return "Marca: " + marca + ", Modelo: " + modelo + ", Precio de Lista: " + precioLista;
     }
 }
+
+

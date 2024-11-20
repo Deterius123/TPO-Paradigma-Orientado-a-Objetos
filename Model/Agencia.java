@@ -20,7 +20,7 @@ public class Agencia {
         public void mostrarMotos(){
             System.out.println("Lista de motos:");
             for (Moto moto: listaMotos){
-                System.out.print(moto);
+                System.out.println(moto);
             }
         }
 

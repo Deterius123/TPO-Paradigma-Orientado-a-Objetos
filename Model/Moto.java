@@ -113,4 +113,7 @@ public class Moto implements Valuable{
         }
         return precioVerdadero;
     }
+    public String toString() {
+        return "Marca: " + marca + ", Modelo: " + modelo + ", Precio de Lista: " + precioLista;
+    }
 }
