@@ -1,5 +1,6 @@
 import Model.*;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.List;
 
@@ -48,12 +49,7 @@ public class Main {
         // Creamos un cliente y un presupuesto y lo añadimos a la agencia.
         Cliente cliente1 = new Cliente(45000, 123, true);
 
-        // Mostramos la lista de autos y motos disponibles.
-        //agenciaPrueba.mostrarAutos();
-
-        //agenciaPrueba.mostrarMotos();
-
-
+        //---------------------------------------------------------------------------------------------------------------------------------------
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("¡Bienvenido a la agencia!");
@@ -65,8 +61,19 @@ public class Main {
             System.out.println("2. Ver lista de motos");
             System.out.println("3. Seleccionar y verificar compra de auto o moto");
             System.out.println("4. Salir");
-            System.out.print("Elige una opción: ");
-            int opcion = scanner.nextInt();
+            int opcion = -1; // Valor predeterminado inválido
+            boolean valido = false;
+            // Validamos que la opción ingresada sea un número entero
+            while (!valido) {
+                System.out.print("Elige una opción: ");
+                try {
+                    opcion = scanner.nextInt();
+                    valido = true;  // Si no ocurre ninguna excepción, la entrada es válida
+                } catch (InputMismatchException e) {
+                    System.out.println("Opción inválida. Por favor, ingresa un número válido.");
+                    scanner.nextLine(); // Limpiar el buffer para evitar un ciclo infinito de excepciones
+                }
+            }
             scanner.nextLine(); // Consumir el salto de línea
 
             switch (opcion) {
