@@ -52,7 +52,7 @@ public class Main {
         //---------------------------------------------------------------------------------------------------------------------------------------
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("¡Bienvenido a la agencia!");
+        System.out.println("¡Bienvenido a la agencia Speed Motors!");
 
         boolean salir = false;
         while (!salir) {
@@ -115,7 +115,7 @@ public class Main {
         }
 
         scanner.close();
-        System.out.println("¡Gracias por visitar la agencia!");
+        System.out.println("¡Gracias por visitar nuestra agencia! ¡Esperamos verlo de nuevo pronto!");
     }
 
     // Metodo para mostrar autos según los filtros seleccionados
